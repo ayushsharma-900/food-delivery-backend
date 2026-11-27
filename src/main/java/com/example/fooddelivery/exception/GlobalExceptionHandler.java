@@ -33,4 +33,11 @@ public class GlobalExceptionHandler {
             .badRequest()
             .body("Invalid request");
     }
+
+    @ExceptionHandler(UnauthorizedException.class)
+    public ResponseEntity<String> handleUnauthorized(UnauthorizedException e) {
+        return ResponseEntity
+            .status(HttpStatus.UNAUTHORIZED)
+            .body(e.getMessage());
+    }
 }
